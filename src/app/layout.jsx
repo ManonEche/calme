@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={cormorantGaramond.className}>
-      <body>
+      <body className="bg-calme-light text-calme-dark">
         <AuthProvider>{children}</AuthProvider>
         <Toaster position="bottom-right" />
       </body>
