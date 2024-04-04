@@ -1,7 +1,8 @@
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function Index() {
   return (
     <>
       <div className="bg-[url('/background.webp')] bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen w-screen">
@@ -13,10 +14,18 @@ export default function Home() {
           <div className="py-5 px-8">
             <nav>
               <ul className="flex gap-3 text-xl">
-                <li>Accueil</li>
-                <li>Nos prestations</li>
-                <li>A propos</li>
-                <li>Contact</li>
+                <Link href="/home">
+                  <li>Accueil</li>
+                </Link>
+                <Link href="">
+                  <li>Nos prestations</li>
+                </Link>
+                <Link href="">
+                  <li>A propos</li>
+                </Link>
+                <Link href="">
+                  <li>Contact</li>
+                </Link>
               </ul>
             </nav>
           </div>
