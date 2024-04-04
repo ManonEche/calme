@@ -39,7 +39,9 @@ export default function Home() {
                   <h1 className="text-5xl pb-5">Accéder à votre profil beauté</h1>
                   <p className="text-2xl p-8">Dévoilez votre éclat naturel en créant votre profil beaute sur mesure avant votre prochain rendez-vous à notre institut.</p>
                   <Button>Se connecter</Button>
-                  <p className="text-2xl p-8">Pas de compte ? <strong>Inscrivez-vous</strong></p>
+                  <Link href="/registration">
+                    <p className="text-2xl p-8">Pas de compte ? <strong>Inscrivez-vous</strong></p>
+                  </Link>
                 </div>
               </div>
               <Footer />

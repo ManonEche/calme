@@ -1,3 +1,4 @@
+import Button from "@/components/Button/Button";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,8 +31,11 @@ export default function Index() {
             </nav>
           </div>
         </div>
-        <div className="flex flex-1 justify-center items-center pb-20">
+        <div className="flex flex-1 flex-col gap-8 justify-center items-center pb-20">
           <h1 className="text-5xl">L'institut qui prend soin de vous.</h1>
+          <Link href="/home">
+            <Button>Découvrir</Button>
+          </Link>
         </div>
         <Footer />
       </div>
