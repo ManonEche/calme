@@ -18,7 +18,7 @@ export default function Index() {
                 <Link href="/home">
                   <li>Accueil</li>
                 </Link>
-                <Link href="">
+                <Link href="/services">
                   <li>Nos prestations</li>
                 </Link>
                 <Link href="">
