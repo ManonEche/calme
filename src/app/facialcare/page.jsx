@@ -12,7 +12,7 @@ export default function FacialCare() {
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div>
               <Image src="/faceRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" />
-              <div className="text-xl whitespace-pre-line">
+              <div className="text-xl whitespace-pre-line pt-2">
                 <p>Offrez à votre peau un éclat radieux avec notre soin du visage Éclat de Soie, conçu pour revitaliser, hydrater et illuminer votre teint. Notre équipe d'esthéticiennes expérimentées vous accueille dans un cadre apaisant et luxueux, où vous pourrez vous détendre et profiter d'une expérience de soin sur mesure.</p>
                 <br />
                 <h2 className="font-bold">Étape 1 : Diagnostic de la Peau</h2>

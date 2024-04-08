@@ -19,10 +19,10 @@ export default function Header() {
                 <Link href="/services">
                   <li>Nos prestations</li>
                 </Link>
-                <Link href="">
-                  <li>A propos</li>
+                <Link href="/about">
+                  <li>À propos</li>
                 </Link>
-                <Link href="">
+                <Link href="/contact">
                   <li>Contact</li>
                 </Link>
               </ul>

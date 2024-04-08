@@ -19,14 +19,14 @@ export default function Services() {
               </div>
             </Link>
 
-            <Link href="">
+            <Link href="/handcare">
               <div className="flex flex-col justify-end items-center gap-6">
                 <Image src="/handsArch.webp" width={1000} height={1000} />
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin des mains & des pieds</h2>
               </div>
             </Link>
 
-            <Link href="">
+            <Link href="/bodycare">
               <div className="flex flex-col justify-center items-center gap-6">
                 <Image src="/bodyArch.webp" width={1000} height={1000} />
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin du corps</h2>
@@ -35,7 +35,7 @@ export default function Services() {
 
           </div>
         </div>
-        <div className="pt-5">
+        <div className="pt-32">
           <Footer />
         </div>
       </div>
