@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { UserRound } from "lucide-react";
 
 export default function Header() {
   return (
@@ -10,9 +11,9 @@ export default function Header() {
             <Image src="/logo.webp" width={60} height={60} />
             <Image src="/brand.webp" width={100} height={100} />
           </div>
-          <div className="py-5 pe-8">
+          <div className="py-5 pe-8 text-calme-dark">
             <nav>
-              <ul className="flex gap-3 text-xl">
+              <ul className="flex items-center gap-3 text-xl">
                 <Link href="/home">
                   <li>Accueil</li>
                 </Link>
@@ -24,6 +25,9 @@ export default function Header() {
                 </Link>
                 <Link href="/contact">
                   <li>Contact</li>
+                </Link>
+                <Link href="/login">
+                  <li><UserRound/></li>
                 </Link>
               </ul>
             </nav>

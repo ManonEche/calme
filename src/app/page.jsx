@@ -2,6 +2,7 @@ import Button from "@/components/Button/Button";
 import Footer from "@/components/Footer/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { UserRound } from "lucide-react";
 
 export default function Index() {
   return (
@@ -12,7 +13,7 @@ export default function Index() {
             <Image src="/logo.webp" width={100} height={100} />
             <Image src="/brand.webp" width={100} height={100} />
           </div>
-          <div className="py-5 px-8">
+          <div className="py-7 px-8">
             <nav>
               <ul className="flex gap-3 text-xl">
                 <Link href="/home">
@@ -26,6 +27,9 @@ export default function Index() {
                 </Link>
                 <Link href="/contact">
                   <li>Contact</li>
+                </Link>
+                <Link href="/login">
+                  <li><UserRound/></li>
                 </Link>
               </ul>
             </nav>
