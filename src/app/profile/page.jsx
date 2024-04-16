@@ -7,8 +7,18 @@ import { ChevronDown, Info, X } from 'lucide-react';
 import { useState } from "react";
 
 export default function Profile() {
-  // State
+  // States
   const [openModal, setOpenModal] = useState(false);
+  const [handleChoice, setHandleChoice] = useState(false)
+
+  // Function
+  const handleTextArea = (e) => {
+    if (e.target.value == "yes") {
+      setHandleChoice(true);
+    } else {
+      setHandleChoice(false);
+    }
+  }
 
   return (
     <>
@@ -177,6 +187,66 @@ export default function Profile() {
                 <div className="flex flex-col items-center w-full gap-2">
                   <label htmlFor="products" className="text-start w-3/4">Quels sont les produits que vous utilisez pour votre visage, vos mains et votre corps ?</label>
                   <textarea name="products" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
+                </div>
+
+                <h3 className="text-2xl font-semibold w-3/4 text-start">Attentes</h3>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="results" className="text-start w-3/4">Quels sont les résultats que vous aimeriez obtenir en venant à notre institut ?</label>
+                  <textarea name="results" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
+                </div>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="areas" className="text-start w-3/4">Y a-t-il des zones spécifiques sur lesquelles vous aimeriez vous concentrer (cernes, ventre, jambes, etc. ) ?</label>
+                  <textarea name="areas" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
+                </div>
+
+                <h3 className="text-2xl font-semibold w-3/4 text-start">Préférences et Allergies</h3>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="preferences" className="text-start w-3/4">Avez-vous des préférences particulières en termes de parfum ou d'ingrédients dans les produits de beauté que nous utilisons ?</label>
+                  <textarea name="preferences" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
+                </div>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="allergies" className="text-start w-3/4">Avez-vous des allergies connues à certains produits ou ingrédients ?</label>
+                  <textarea name="allergies" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
+                </div>
+
+                <h3 className="text-2xl font-semibold w-3/4 text-start">Expériences</h3>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <p className="w-3/4 text-start">Avez-vous déjà visité un institut de beauté auparavant ?</p>
+                  <div className="flex items-center flex-row-reverse gap-3 w-3/4">
+                    <label htmlFor="yes" className="text-start w-full">Oui</label>
+                    <input type="radio" id="yes" value="yes" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
+                  </div>
+                  <div className="flex items-center flex-row-reverse gap-3 w-3/4">
+                    <label htmlFor="no" className="text-start w-full">Non</label>
+                    <input type="radio" id="no" value="no" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
+                  </div>
+                </div>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="experiences" className="text-start w-3/4">Si oui, quel type de services avez-vous utilisé ?</label>
+                  <textarea name="experiences" className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed" disabled={!handleChoice} />
+                </div>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="experiences" className="text-start w-3/4">Qu'avez-vous apprécié dans vos expériences précédentes en institut de beauté ?</label>
+                  <textarea name="experiences" className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed" disabled={!handleChoice} />
+                </div>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="experiences" className="text-start w-3/4">Y a-t-il quelque chose que vous avez moins apprécié ou que vous aimeriez voir amélioré dans votre expérience en institut de beauté ?</label>
+                  <textarea name="experiences" className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed" disabled={!handleChoice} />
+                </div>
+
+                <h3 className="text-2xl font-semibold w-3/4 text-start">Autres commentaires</h3>
+
+                <div className="flex flex-col items-center w-full gap-2">
+                  <label htmlFor="preferences" className="text-start w-3/4">Y a-t-il d'autres informations que vous aimeriez partager avec nous pour nous aider à personnaliser votre expérience chez Calme ?</label>
+                  <textarea name="preferences" className="w-3/4 rounded-2xl px-5 py-3 text-xl" />
                 </div>
 
               </form>
