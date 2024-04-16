@@ -8,8 +8,8 @@ export default function Header() {
       <div className="bg-calme-medium">
         <div className="flex justify-between items-center w-screen">
           <div className="flex items-center gap-2 px-3 py-1">
-            <Image src="/logo.webp" width={60} height={60} />
-            <Image src="/brand.webp" width={100} height={100} />
+            <Image src="/logo.webp" width={60} height={60} alt="Logo"/>
+            <Image src="/brand.webp" width={100} height={100} alt="Marque"/>
           </div>
           <div className="py-5 pe-8 text-calme-dark">
             <nav>

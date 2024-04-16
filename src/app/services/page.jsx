@@ -14,21 +14,21 @@ export default function Services() {
 
             <Link href="/facialcare">
               <div className="flex flex-col justify-center items-center gap-6">
-                <Image src="/faceArch.webp" width={1000} height={1000} />
+                <Image src="/faceArch.webp" width={1000} height={1000} alt="Soin du visage"/>
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin du visage</h2>
               </div>
             </Link>
 
             <Link href="/handcare">
               <div className="flex flex-col justify-end items-center gap-6">
-                <Image src="/handsArch.webp" width={1000} height={1000} />
+                <Image src="/handsArch.webp" width={1000} height={1000} alt="Soin des mains"/>
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin des mains & des pieds</h2>
               </div>
             </Link>
 
             <Link href="/bodycare">
               <div className="flex flex-col justify-center items-center gap-6">
-                <Image src="/bodyArch.webp" width={1000} height={1000} />
+                <Image src="/bodyArch.webp" width={1000} height={1000} alt="Soin du corps" />
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin du corps</h2>
               </div>
             </Link>

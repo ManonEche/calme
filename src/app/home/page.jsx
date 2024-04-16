@@ -11,8 +11,8 @@ export default function Home() {
         <div>
           <div className="absolute z-30 flex justify-between w-screen">
             <div className="flex items-center gap-2 p-5">
-              <Image src="/logo.webp" width={100} height={100} />
-              <Image src="/brand.webp" width={100} height={100} />
+              <Image src="/logo.webp" width={100} height={100} alt="Logo"/>
+              <Image src="/brand.webp" width={100} height={100} alt="Marque"/>
             </div>
             <div className="py-7 px-8">
               <nav>
@@ -42,7 +42,9 @@ export default function Home() {
                 <div className="w-3/4 text-center whitespace-pre-line pt-28">
                   <h1 className="text-5xl pb-5">Accéder à votre profil beauté</h1>
                   <p className="text-2xl p-8">Dévoilez votre éclat naturel en créant votre profil beaute sur mesure avant votre prochain rendez-vous à notre institut.</p>
-                  <Button>Se connecter</Button>
+                  <Link href="/login">
+                    <Button>Se connecter</Button>
+                  </Link>
                   <Link href="/signup">
                     <p className="text-2xl p-8">Pas de compte ? <strong>Inscrivez-vous</strong></p>
                   </Link>

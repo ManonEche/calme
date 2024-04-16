@@ -10,8 +10,8 @@ export default function Index() {
       <div className="bg-[url('/background.webp')] bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen w-screen">
         <div className="flex justify-between">
           <div className="flex items-center gap-2 p-5">
-            <Image src="/logo.webp" width={100} height={100} />
-            <Image src="/brand.webp" width={100} height={100} />
+            <Image src="/logo.webp" width={100} height={100} alt="Logo" />
+            <Image src="/brand.webp" width={100} height={100} alt="Marque" />
           </div>
           <div className="py-7 px-8">
             <nav>

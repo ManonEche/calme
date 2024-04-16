@@ -21,7 +21,7 @@ export default function About() {
             <p>Que vous cherchiez une pause bien méritée ou que vous souhaitiez vous préparer pour une occasion spéciale, nous sommes là pour vous aider à atteindre vos objectifs de beauté et de bien-être. Venez nous rendre visite et laissez-nous vous guider vers une expérience de beauté et de détente incomparable.</p>
             <br />
             <div className="flex justify-center items-center pt-5">
-              <Image src="/line.webp" width={1000} height={1000} className="w-2/6" />
+              <Image src="/line.webp" width={1000} height={1000} className="w-2/6" alt="Ligne" />
             </div>
           </div>
         </div>

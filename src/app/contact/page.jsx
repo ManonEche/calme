@@ -33,7 +33,7 @@ export default function Contact() {
                 </div>
               </div>
               <div className="flex justify-end">
-                <Image src="/map.webp" width={500} height={500} className="w-3/4" />
+                <Image src="/map.webp" width={500} height={500} className="w-3/4" alt="Plan"/>
               </div>
             </div>
           </div>

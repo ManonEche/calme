@@ -11,7 +11,7 @@ export default function HandCare() {
         <div className="flex justify-center">
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div>
-              <Image src="/handsRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" />
+              <Image src="/handsRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" alt="Soin des mains"/>
               <div className="text-xl whitespace-pre-line pt-2">
                 <p>Offrez à vos mains et à vos pieds le luxe qu'ils méritent avec notre Soin Douceur Velours. Dans un environnement paisible et raffiné, notre équipe d'experts en esthétique prendra soin de vos extrémités pour leur redonner douceur et éclat.</p>
                 <br />
@@ -33,9 +33,9 @@ export default function HandCare() {
                 <p>Après notre Soin Douceur Velours, vos mains et vos pieds seront sublimés, hydratés et incroyablement doux. Offrez-leur le traitement qu'ils méritent et prenez rendez-vous dès aujourd'hui pour une expérience de beauté ultime dans notre institut.</p>
                 <br />
                 <div className="flex justify-center items-center gap-3 pt-5">
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur" />
                   <h3 className="text-2xl text-center font-extrabold">60 mn - 50€</h3>
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur" />
                 </div>
               </div>
             </div>

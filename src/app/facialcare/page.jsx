@@ -11,7 +11,7 @@ export default function FacialCare() {
         <div className="flex justify-center">
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div>
-              <Image src="/faceRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" />
+              <Image src="/faceRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" alt="Soin du visage" />
               <div className="text-xl whitespace-pre-line pt-2">
                 <p>Offrez à votre peau un éclat radieux avec notre soin du visage Éclat de Soie, conçu pour revitaliser, hydrater et illuminer votre teint. Notre équipe d'esthéticiennes expérimentées vous accueille dans un cadre apaisant et luxueux, où vous pourrez vous détendre et profiter d'une expérience de soin sur mesure.</p>
                 <br />
@@ -36,9 +36,9 @@ export default function FacialCare() {
                 <p>Après notre soin du visage Éclat de Soie, votre peau rayonnera de fraîcheur et d'éclat. Vous vous sentirez détendu(e), revitalisé(e) et prêt(e) à affronter le monde avec confiance. Prenez rendez-vous dès aujourd'hui pour une expérience de beauté inoubliable dans notre institut.</p>
                 <br />
                 <div className="flex justify-center items-center gap-3 pt-5">
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur" />
                   <h3 className="text-2xl text-center font-extrabold">90 mn - 75€</h3>
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur"/>
                 </div>
               </div>
             </div>

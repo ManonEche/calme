@@ -11,7 +11,7 @@ export default function BodyCare() {
         <div className="flex justify-center">
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div>
-              <Image src="/bodyRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" />
+              <Image src="/bodyRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" alt="Soin du corps" />
               <div className="text-xl whitespace-pre-line pt-2">
                 <p>Détendez-vous et revitalisez votre corps avec notre Soin Harmonie Divine, une expérience luxueuse conçue pour vous transporter dans un état de bien-être absolu. Dans notre oasis de calme et de sérénité, notre équipe dévouée vous offre un traitement personnalisé pour nourrir votre peau et apaiser votre esprit.</p>
                 <br />
@@ -33,9 +33,9 @@ export default function BodyCare() {
                 <p>Après notre Soin Harmonie Divine, votre corps est enveloppé d'une sensation de bien-être profond et votre peau est douce, lumineuse et éclatante de santé. Offrez-vous cette expérience de luxe et prenez rendez-vous dès aujourd'hui pour une détente totale dans notre institut.</p>
                 <br />
                 <div className="flex justify-center items-center gap-3 pt-5">
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur"/>
                   <h3 className="text-2xl text-center font-extrabold">90 mn - 75€</h3>
-                  <Image src="/flower.webp" width={500} height={500} className="w-12" />
+                  <Image src="/flower.webp" width={500} height={500} className="w-12" alt="Fleur" />
                 </div>
               </div>
             </div>
