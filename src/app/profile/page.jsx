@@ -3,7 +3,7 @@
 import Button from "@/components/Button/Button";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import { ChevronDown, Info, X } from 'lucide-react';
+import { ChevronDown, Info, Power, X } from 'lucide-react';
 import { useState } from "react";
 
 export default function Profile() {
@@ -24,7 +24,13 @@ export default function Profile() {
     <>
       <div className="min-h-screen w-screen">
         <Header />
-        <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
+        <div className="flex justify-end my-4 mx-8">
+          <Power/>
+        </div>
+        <h1 className="text-5xl text-center mt-11 mb-5">Mon profil</h1>
+        <div className="flex justify-center mb-12">
+          <Button>Se déconnecter</Button>
+        </div>
         <div className="flex justify-center">
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div className="w-3/4 text-center whitespace-pre-line">
