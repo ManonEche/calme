@@ -52,7 +52,6 @@ export default function Login() {
     // Redirect
     router.replace("/profile");
 
-
   }
   return (
     <>

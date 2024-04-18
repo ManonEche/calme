@@ -17,9 +17,6 @@ export default function Profile() {
   const [openModal, setOpenModal] = useState(false);
   const [handleChoice, setHandleChoice] = useState(false)
   const [formData, setFormData] = useState(null);
-  const [lastName, setLastName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [birth, setBirth] = useState("");
   const [gender, setGender] = useState("");
@@ -51,6 +48,23 @@ export default function Profile() {
     try {
       await createQuiz(formData);
       setFormData(formData);
+      setPhoneNumber("");
+      setBirth("");
+      setGender("");
+      setSkin("");
+      setFacialHydration("");
+      setHandHydration("");
+      setBodyHydration("");
+      setProducts("");
+      setResults("");
+      setAreas("");
+      setPreferences("");
+      setAllergies("");
+      setChoice("");
+      setExperience("");
+      setExperiences("");
+      setImprovements("");
+      setRemarks("");
     } catch (e) {
       return toast.error(e.message);
     }
@@ -69,7 +83,7 @@ export default function Profile() {
         )}
         <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
 
-        {formData ? (<div></div>) : (
+        {formData ? (<div>Hello</div>) : (
           <div className="flex justify-center">
             <div className="flex justify-center items-center w-4/5 px-0 mx-0">
               <div className="w-3/4 text-center whitespace-pre-line">
@@ -83,10 +97,9 @@ export default function Profile() {
                     <input
                       type="text"
                       name="lastname"
-                      className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-3/4 rounded-2xl px-5 py-3 text-xl capitalize disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
                       disabled
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
+                      value={session?.user.lastname}
                     />
                   </div>
 
@@ -95,10 +108,9 @@ export default function Profile() {
                     <input
                       type="text"
                       name="firstname"
-                      className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-3/4 rounded-2xl px-5 py-3 text-xl capitalize disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
                       disabled
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
+                      value={session?.user.firstname}
                     />
                   </div>
 
@@ -107,10 +119,9 @@ export default function Profile() {
                     <input
                       type="email"
                       name="email"
-                      className="w-3/4 rounded-2xl px-5 py-3 text-xl disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
+                      className="w-3/4 rounded-2xl px-5 py-3 text-xl lowercase disabled:bg-white disabled:opacity-60 disabled:cursor-not-allowed"
                       disabled
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      value={session?.user.email}
                     />
                   </div>
 
@@ -399,8 +410,10 @@ export default function Profile() {
                     />
                   </div>
 
+                  <Button>Enregistrer</Button>
+
                 </form>
-                <Button>Enregistrer</Button>
+
               </div>
             </div>
           </div>
