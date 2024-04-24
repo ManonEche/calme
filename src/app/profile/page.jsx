@@ -8,6 +8,7 @@ import { ChevronDown, Info, Power, X } from 'lucide-react';
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 
 export default function Profile() {
   // Variable
@@ -33,14 +34,19 @@ export default function Profile() {
   const [experiences, setExperiences] = useState("");
   const [improvements, setImprovements] = useState("");
   const [remarks, setRemarks] = useState("");
+  const [formSent, setFormSent] = useState(false);
 
   // Functions
   const handleTextArea = (e) => {
+
+    setChoice(e.target.value);
+
     if (e.target.value == "yes") {
       setHandleChoice(true);
     } else {
       setHandleChoice(false);
     }
+
   }
 
   const handleSubmit = async (e) => {
@@ -63,8 +69,13 @@ export default function Profile() {
       experience,
       experiences,
       improvements,
-      remarks});
+      remarks
+    });
 
+    // Alerte de succès pour l'envoi du formulaire
+    toast.success("Formulaire envoyé avec succès.")
+
+    // Réinitialisation des champs
     setPhoneNumber("");
     setBirth("");
     setGender("");
@@ -83,6 +94,9 @@ export default function Profile() {
     setImprovements("");
     setRemarks("");
 
+    // Détection du formulaire comme soumis
+    setFormSent(true);
+
   }
 
   return (
@@ -98,7 +112,7 @@ export default function Profile() {
         )}
         <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
 
-        {/* { ? (<div>Hello</div>) : ( */}
+        {!formSent ? (
           <div className="flex justify-center">
             <div className="flex justify-center items-center w-4/5 px-0 mx-0">
               <div className="w-3/4 text-center whitespace-pre-line">
@@ -166,19 +180,38 @@ export default function Profile() {
                     <p className="w-3/4 text-start">Vous êtes ?</p>
                     <div
                       className="flex items-center flex-row-reverse gap-3 w-3/4"
-                      value={gender}
-                      onChange={(e) => setGender(e.target.value)}
                     >
                       <label htmlFor="man" className="text-start w-full">Un homme</label>
-                      <input type="radio" id="man" name="gender" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="man"
+                        name="gender"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="homme"
+                        onChange={(e) => setGender(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="woman" className="text-start w-full">Une femme</label>
-                      <input type="radio" id="woman" name="gender" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="woman"
+                        name="gender"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="femme"
+                        onChange={(e) => setGender(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="other" className="text-start w-full">Autre</label>
-                      <input type="radio" id="other" name="gender" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="other"
+                        name="gender"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="autre"
+                        onChange={(e) => setGender(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -195,11 +228,11 @@ export default function Profile() {
                     </label>
                     <select id="skin" name="skin" className="appearance-none w-full rounded-2xl px-5 py-3 text-lg">
                       <option value="">Sélectionner :</option>
-                      <option value="dry">Sèche</option>
-                      <option value="normal">Normale</option>
-                      <option value="combination">Mixte</option>
-                      <option value="oily">Grasse</option>
-                      <option value="nothing">Ne sais pas</option>
+                      <option value="sèche">Sèche</option>
+                      <option value="normale">Normale</option>
+                      <option value="mixte">Mixte</option>
+                      <option value="grasse">Grasse</option>
+                      <option value="ne sais pas">Ne sais pas</option>
                     </select>
                     <ChevronDown className="absolute pointer-events-none bottom-3 right-3" />
 
@@ -228,27 +261,60 @@ export default function Profile() {
                     <p className="w-3/4 text-start">À quelle fréquence vous hydratez-vous <b>le visage</b> ?</p>
                     <div
                       className="flex items-center flex-row-reverse gap-3 w-3/4"
-                      value={facialHydration}
-                      onChange={(e) => setFacialHydration(e.target.value)}
                     >
                       <label htmlFor="everyDayHead" className="text-start w-full">Tous les jours</label>
-                      <input type="radio" id="everyDayHead" name="head" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="everyDayHead"
+                        name="head"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="tous les jours"
+                        onChange={(e) => setFacialHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="twiceHead" className="text-start w-full">2/3 fois par semaine</label>
-                      <input type="radio" id="twiceHead" name="head" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="twiceHead"
+                        name="head"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="2/3 fois par semaine"
+                        onChange={(e) => setFacialHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="onceHead" className="text-start w-full">1 fois par semaine</label>
-                      <input type="radio" id="onceHead" name="head" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="onceHead"
+                        name="head"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="1 fois par semaine"
+                        onChange={(e) => setFacialHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="occasionallyHead" className="text-start w-full">Occasionnellement</label>
-                      <input type="radio" id="occasionallyHead" name="head" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="occasionallyHead"
+                        name="head"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="occasionnellement"
+                        onChange={(e) => setFacialHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="neverHead" className="text-start w-full">Jamais</label>
-                      <input type="radio" id="neverHead" name="head" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="neverHead"
+                        name="head"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="jamais"
+                        onChange={(e) => setFacialHydration(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -256,27 +322,60 @@ export default function Profile() {
                     <p className="w-3/4 text-start">À quelle fréquence vous hydratez-vous <b>les mains</b> ?</p>
                     <div
                       className="flex items-center flex-row-reverse gap-3 w-3/4"
-                      value={handHydration}
-                      onChange={(e) => setHandHydration(e.target.value)}
                     >
                       <label htmlFor="everyDayHands" className="text-start w-full">Tous les jours</label>
-                      <input type="radio" id="everyDayHands" name="hands" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="everyDayHands"
+                        name="hands"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="tous les jours"
+                        onChange={(e) => setHandHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="twiceHands" className="text-start w-full">2/3 fois par semaine</label>
-                      <input type="radio" id="twiceHands" name="hands" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="twiceHands"
+                        name="hands"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="2/3 fois par semaine"
+                        onChange={(e) => setHandHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="onceHands" className="text-start w-full">1 fois par semaine</label>
-                      <input type="radio" id="onceHands" name="hands" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="onceHands"
+                        name="hands"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="1 fois par semaine"
+                        onChange={(e) => setHandHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="occasionallyHands" className="text-start w-full">Occasionnellement</label>
-                      <input type="radio" id="occasionallyHands" name="hands" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="occasionallyHands"
+                        name="hands"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="occasionnellement"
+                        onChange={(e) => setHandHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="neverHands" className="text-start w-full">Jamais</label>
-                      <input type="radio" id="neverHands" name="hands" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="neverHands"
+                        name="hands"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="jamais"
+                        onChange={(e) => setHandHydration(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -284,27 +383,60 @@ export default function Profile() {
                     <p className="w-3/4 text-start">À quelle fréquence vous hydratez-vous <b>le corps</b> ?</p>
                     <div
                       className="flex items-center flex-row-reverse gap-3 w-3/4"
-                      value={bodyHydration}
-                      onChange={(e) => setBodyHydration(e.target.value)}
                     >
                       <label htmlFor="everyDayBody" className="text-start w-full">Tous les jours</label>
-                      <input type="radio" id="everyDayBody" name="body" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="everyDayBody"
+                        name="body"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="tous les jours"
+                        onChange={(e) => setBodyHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="twiceBody" className="text-start w-full">2/3 fois par semaine</label>
-                      <input type="radio" id="twiceBody" name="body" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="twiceBody"
+                        name="body"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="2/3 fois par semaine"
+                        onChange={(e) => setBodyHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="onceBody" className="text-start w-full">1 fois par semaine</label>
-                      <input type="radio" id="onceBody" name="body" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="onceBody"
+                        name="body"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="1 fois par semaine"
+                        onChange={(e) => setBodyHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="occasionallyBody" className="text-start w-full">Occasionnellement</label>
-                      <input type="radio" id="occasionallyBody" name="body" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="occasionallyBody"
+                        name="body"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="occasionnellement"
+                        onChange={(e) => setBodyHydration(e.target.value)}
+                      />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="neverBody" className="text-start w-full">Jamais</label>
-                      <input type="radio" id="neverBody" name="body" className="w-fit text-xl accent-calme-dark" />
+                      <input
+                        type="radio"
+                        id="neverBody"
+                        name="body"
+                        className="w-fit text-xl accent-calme-dark"
+                        value="jamais"
+                        onChange={(e) => setBodyHydration(e.target.value)}
+                      />
                     </div>
                   </div>
 
@@ -368,15 +500,13 @@ export default function Profile() {
                     <p className="w-3/4 text-start">Avez-vous déjà visité un institut de beauté auparavant ?</p>
                     <div
                       className="flex items-center flex-row-reverse gap-3 w-3/4"
-                      value={choice}
-                      onChange={(e) => setChoice(e.target.value)}
                     >
                       <label htmlFor="yes" className="text-start w-full">Oui</label>
-                      <input type="radio" id="yes" value="yes" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
+                      <input type="radio" id="yes" value="oui" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
                     </div>
                     <div className="flex items-center flex-row-reverse gap-3 w-3/4">
                       <label htmlFor="no" className="text-start w-full">Non</label>
-                      <input type="radio" id="no" value="no" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
+                      <input type="radio" id="no" value="non" name="choice" onChange={handleTextArea} className="w-fit text-xl accent-calme-dark" />
                     </div>
                   </div>
 
@@ -432,7 +562,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-        {/* )} */}
+        ) : (<div>Hello</div>)}
         <div className="pt-5">
           <Footer />
         </div>
