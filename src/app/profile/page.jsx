@@ -16,7 +16,6 @@ export default function Profile() {
   // States
   const [openModal, setOpenModal] = useState(false);
   const [handleChoice, setHandleChoice] = useState(false)
-  const [formData, setFormData] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [birth, setBirth] = useState("");
   const [gender, setGender] = useState("");
@@ -44,30 +43,46 @@ export default function Profile() {
     }
   }
 
-  const handleQuiz = async (formData) => {
-    try {
-      await createQuiz(formData);
-      setFormData(formData);
-      setPhoneNumber("");
-      setBirth("");
-      setGender("");
-      setSkin("");
-      setFacialHydration("");
-      setHandHydration("");
-      setBodyHydration("");
-      setProducts("");
-      setResults("");
-      setAreas("");
-      setPreferences("");
-      setAllergies("");
-      setChoice("");
-      setExperience("");
-      setExperiences("");
-      setImprovements("");
-      setRemarks("");
-    } catch (e) {
-      return toast.error(e.message);
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await createQuiz({
+      phoneNumber,
+      birth,
+      gender,
+      skin,
+      facialHydration,
+      handHydration,
+      bodyHydration,
+      products,
+      results,
+      areas,
+      preferences,
+      allergies,
+      choice,
+      experience,
+      experiences,
+      improvements,
+      remarks});
+
+    setPhoneNumber("");
+    setBirth("");
+    setGender("");
+    setSkin("");
+    setFacialHydration("");
+    setHandHydration("");
+    setBodyHydration("");
+    setProducts("");
+    setResults("");
+    setAreas("");
+    setPreferences("");
+    setAllergies("");
+    setChoice("");
+    setExperience("");
+    setExperiences("");
+    setImprovements("");
+    setRemarks("");
+
   }
 
   return (
@@ -83,12 +98,12 @@ export default function Profile() {
         )}
         <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
 
-        {formData ? (<div>Hello</div>) : (
+        {/* { ? (<div>Hello</div>) : ( */}
           <div className="flex justify-center">
             <div className="flex justify-center items-center w-4/5 px-0 mx-0">
               <div className="w-3/4 text-center whitespace-pre-line">
                 <h2 className="text-3xl pb-10">Je remplis mon profil beauté</h2>
-                <form className="flex flex-col items-center gap-7 text-xl pb-10" onSubmit={(e) => e.preventDefault()} action={handleQuiz}>
+                <form className="flex flex-col items-center gap-7 text-xl pb-10" onSubmit={handleSubmit}>
 
                   <h3 className="text-2xl font-semibold w-3/4 text-start">Informations personnelles</h3>
 
@@ -417,7 +432,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-        )}
+        {/* )} */}
         <div className="pt-5">
           <Footer />
         </div>

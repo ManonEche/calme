@@ -4,7 +4,7 @@ import { MongoClient } from "mongodb";
 
 export const createQuiz = async (formData) => {
   // Variable
-  const session = await getServerSession(authOptions);
+  // const session = await getServerSession(authOptions);
 
   let client;
 
@@ -15,10 +15,46 @@ export const createQuiz = async (formData) => {
     // Connexion à la base de données MongoDB
     const db = client.db(process.env.MONGODB_DATABASE);
 
+    // Récupérer le contenu du formulaire dans formData
+    const {
+      phoneNumber,
+      birth,
+      gender,
+      skin,
+      facialHydration,
+      handHydration,
+      bodyHydration,
+      products,
+      results,
+      areas,
+      preferences,
+      allergies,
+      choice,
+      experience,
+      experiences,
+      improvements,
+      remarks
+    } = formData;
+
     // Ajouter le questionnaire à la base de données
     await db.collection("quizzes").insertOne({
-      email: session.user.email,
-      content: formData.get("content")
+      phoneNumber,
+      birth,
+      gender,
+      skin,
+      facialHydration,
+      handHydration,
+      bodyHydration,
+      products,
+      results,
+      areas,
+      preferences,
+      allergies,
+      choice,
+      experience,
+      experiences,
+      improvements,
+      remarks
     });
 
   } catch (e) {
