@@ -7,7 +7,7 @@ import Header from "@/components/Header/Header";
 import { ChevronDown, Info, Power, X } from 'lucide-react';
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 
 export default function Profile() {
@@ -41,7 +41,7 @@ export default function Profile() {
 
     setChoice(e.target.value);
 
-    if (e.target.value == "yes") {
+    if (e.target.value === "yes") {
       setHandleChoice(true);
     } else {
       setHandleChoice(false);
@@ -69,7 +69,8 @@ export default function Profile() {
       experience,
       experiences,
       improvements,
-      remarks
+      remarks,
+      completedForm : true
     });
 
     // Alerte de succès pour l'envoi du formulaire
@@ -99,6 +100,12 @@ export default function Profile() {
 
   }
 
+  const handleStatusForm = () => {
+    if (session?.quizzes?._id === session?.user?._id) {
+      return true;
+    }
+  }
+
   return (
     <>
       <div className="min-h-screen w-screen">
@@ -112,7 +119,7 @@ export default function Profile() {
         )}
         <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
 
-        {!formSent ? (
+        {!formSent && !handleStatusForm() ? (
           <div className="flex justify-center">
             <div className="flex justify-center items-center w-4/5 px-0 mx-0">
               <div className="w-3/4 text-center whitespace-pre-line">
@@ -217,8 +224,6 @@ export default function Profile() {
 
                   <div
                     className="relative flex flex-col items-center w-3/4 gap-2"
-                    value={skin}
-                    onChange={(e) => setSkin(e.target.value)}
                   >
                     <label htmlFor="skin" className="text-start w-full flex gap-2 items-center">
                       Quel est votre type de peau ?
@@ -226,7 +231,13 @@ export default function Profile() {
                         <Info className="w-5" />
                       </button>
                     </label>
-                    <select id="skin" name="skin" className="appearance-none w-full rounded-2xl px-5 py-3 text-lg">
+                    <select
+                      id="skin"
+                      name="skin"
+                      className="appearance-none w-full rounded-2xl px-5 py-3 text-lg"
+                      value={skin}
+                      onChange={(e) => setSkin(e.target.value)}
+                    >
                       <option value="">Sélectionner :</option>
                       <option value="sèche">Sèche</option>
                       <option value="normale">Normale</option>
