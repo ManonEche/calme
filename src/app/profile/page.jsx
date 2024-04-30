@@ -7,7 +7,7 @@ import Header from "@/components/Header/Header";
 import { ChevronDown, Info, Power, X } from 'lucide-react';
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export default function Profile() {
@@ -35,6 +35,10 @@ export default function Profile() {
   const [improvements, setImprovements] = useState("");
   const [remarks, setRemarks] = useState("");
   const [formSent, setFormSent] = useState(false);
+  const [quizzes, setQuizzes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadingQuiz, setLoadingQuiz] = useState(true);
+
 
   // Functions
   const handleTextArea = (e) => {
@@ -70,7 +74,8 @@ export default function Profile() {
       experiences,
       improvements,
       remarks,
-      completedForm : true
+      userId: session?.user._id,
+      completedForm: true
     });
 
     // Alerte de succès pour l'envoi du formulaire
@@ -100,16 +105,37 @@ export default function Profile() {
 
   }
 
-  const handleStatusForm = () => {
-    if (session?.quizzes?._id === session?.user?._id) {
-      return true;
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch("/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            quizzes
+          })
+        });
+        const data = await response.json();
+        setQuizzes(data.quizzes);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+        setLoadingQuiz(false);
+      }
     }
-  }
+
+    fetchData();
+  }, [])
 
   return (
     <>
       <div className="min-h-screen w-screen">
         <Header />
+        <div className="min-h-screen">
         {session?.user?.email && (
           <div className="flex justify-end my-4 mx-8">
             <Link href="/home">
@@ -117,9 +143,17 @@ export default function Profile() {
             </Link>
           </div>
         )}
-        <h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>
 
-        {!formSent && !handleStatusForm() ? (
+        {loading && (
+          <div className="flex justify-center items-center text-2xl mt-5 duration-1000 h-screen">
+            <div className="loader"></div>
+          </div>
+        )}
+
+        {!loading && (<h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>)}
+
+        {!loadingQuiz && (!formSent && !quizzes.some((quizzes) => quizzes?.userId === session?.user._id)) ? (
+
           <div className="flex justify-center">
             <div className="flex justify-center items-center w-4/5 px-0 mx-0">
               <div className="w-3/4 text-center whitespace-pre-line">
@@ -166,6 +200,7 @@ export default function Profile() {
                     <input
                       type="tel"
                       name="tel"
+                      pattern="[0-9.]+"
                       className="w-3/4 rounded-2xl px-5 py-3 text-xl"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
@@ -573,9 +608,21 @@ export default function Profile() {
               </div>
             </div>
           </div>
-        ) : (<div>Hello</div>)}
+
+        ) : (
+          <div>
+            {quizzes.map(quiz => (
+              <div key={quiz._id}>
+                <p>{quiz.remarks}</p>
+              </div>
+            ))}
+          </div>
+        )}
+</div>
         <div className="pt-5">
-          <Footer />
+          {!loading && (
+            <Footer />
+          )}
         </div>
       </div>
     </>
