@@ -48,7 +48,7 @@ export default function Profile() {
 
     setChoice(e.target.value);
 
-    if (e.target.value === "yes") {
+    if (e.target.value === "oui") {
       setHandleChoice(true);
     } else {
       setHandleChoice(false);
@@ -102,7 +102,7 @@ export default function Profile() {
     setExperiences("");
     setImprovements("");
     setRemarks("");
-
+    
     // Détection du formulaire comme soumis
     setFormSent(true);
 
@@ -159,7 +159,7 @@ export default function Profile() {
 
           {!loading && (<h1 className="text-5xl text-center mt-11 mb-12">Mon profil</h1>)}
 
-          {!loadingQuiz && (!formSent && !quizzes.some((quizzes) => quizzes?.userId === session?.user._id)) ? (
+          {!loadingQuiz && !formSent && !quizzes.some((quizzes) => quizzes?.userId === session?.user._id) ? (
 
             <div className="flex justify-center">
               <div className="flex justify-center items-center w-4/5 px-0 mx-0">
@@ -608,7 +608,7 @@ export default function Profile() {
                       />
                     </div>
 
-                    <Button>Enregistrer</Button>
+                    <Button type="submit">Enregistrer</Button>
 
                   </form>
 
@@ -618,8 +618,8 @@ export default function Profile() {
 
           ) : (
             <div>
-              {quizzes.map(quiz => (
-                <div key={quiz.userId}>
+              {quizzes.filter((quiz) => quiz.userId === session?.user._id).map((quiz) => (
+                <div key={quiz._id}>
                   <div className="flex justify-center">
                     <div className="w-3/5">
                       <h3 className="text-2xl font-semibold text-start pb-5 ps-2">Informations personnelles</h3>
@@ -663,7 +663,7 @@ export default function Profile() {
 
                         <div>
                           <h4 className="font-bold pb-1">Type de peau</h4>
-                          <p className="capitalize pb-4">{quiz.skin}</p>
+                          <p className="pb-4">{capitalizeFirstLetter(quiz.skin)}</p>
                         </div>
                       </div>
 
@@ -672,17 +672,17 @@ export default function Profile() {
                       <div className="bg-white rounded-2xl px-5 pt-3 text-xl">
                         <div>
                           <h4 className="font-bold pb-1">Visage</h4>
-                          <p className="capitalize pb-4">{quiz.facialHydration}</p>
+                          <p className="pb-4">{capitalizeFirstLetter(quiz.facialHydration)}</p>
                         </div>
 
                         <div>
                           <h4 className="font-bold pb-1">Mains</h4>
-                          <p className="capitalize pb-4">{quiz.handHydration}</p>
+                          <p className="pb-4">{capitalizeFirstLetter(quiz.handHydration)}</p>
                         </div>
 
                         <div>
                           <h4 className="font-bold pb-1">Corps</h4>
-                          <p className="capitalize pb-4">{quiz.bodyHydration}</p>
+                          <p className="pb-4">{capitalizeFirstLetter(quiz.bodyHydration)}</p>
                         </div>
 
                         <div>
