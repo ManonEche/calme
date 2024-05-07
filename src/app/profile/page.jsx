@@ -42,7 +42,6 @@ export default function Profile() {
   const [loading, setLoading] = useState(false);
   const [loadingQuiz, setLoadingQuiz] = useState(true);
 
-
   // Functions
   const handleTextArea = (e) => {
 
@@ -102,10 +101,12 @@ export default function Profile() {
     setExperiences("");
     setImprovements("");
     setRemarks("");
-    
+
     // Détection du formulaire comme soumis
     setFormSent(true);
 
+    // Rechargement de la page
+    window.location.reload();
   }
 
   useEffect(() => {
@@ -611,7 +612,6 @@ export default function Profile() {
                     <Button type="submit">Enregistrer</Button>
 
                   </form>
-
                 </div>
               </div>
             </div>

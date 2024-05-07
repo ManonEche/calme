@@ -38,6 +38,7 @@ export const createQuiz = async (formData) => {
 
     // Ajouter le questionnaire à la base de données
     await db.collection("quizzes").insertOne(formData);
+    
 
   } catch (e) {
     await client.close();
@@ -45,5 +46,4 @@ export const createQuiz = async (formData) => {
   }
 
   await client.close();
-
 }
