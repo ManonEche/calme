@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { UserRound } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 import { toast } from "sonner";
 
 export default function Login() {
@@ -41,7 +41,6 @@ export default function Login() {
         return toast.error(response.error);
       }
 
-
     } catch (error) {
       return toast.error(error.message);
     }
@@ -49,8 +48,16 @@ export default function Login() {
     // Success
     toast.success("Vous êtes connecté(e).");
 
-    // Redirect
-    router.replace("/profile");
+    const session = await getSession();
+
+    //Redirect en fonction du rôle
+    if (session && session.user.role) {
+      if (session.user.role === "admin") {
+        router.replace("/admin");
+      } else {
+        router.replace("/profile");
+      }
+    }
 
   }
   return (
@@ -59,8 +66,8 @@ export default function Login() {
         <div>
           <div className="absolute z-30 flex justify-between w-screen">
             <div className="flex items-center gap-2 p-5">
-              <Image src="/logo.webp" width={100} height={100} alt="Logo"/>
-              <Image src="/brand.webp" width={100} height={100} alt="Marque"/>
+              <Image src="/logo.webp" width={100} height={100} alt="Logo" />
+              <Image src="/brand.webp" width={100} height={100} alt="Marque" />
             </div>
             <div className="py-7 px-8">
               <nav>
@@ -95,7 +102,7 @@ export default function Login() {
                     <input type="email" name="email" placeholder="Email" className="w-3/4 rounded-2xl px-5 py-3 text-xl bg-calme-light" required />
                     <input type="password" name="password" placeholder="Mot de passe" className="w-3/4 rounded-2xl px-5 py-3 text-xl mb-10 bg-calme-light" required />
 
-                    <Button>Se connecter</Button>
+                    <Button type="submit">Se connecter</Button>
 
                   </form>
 
