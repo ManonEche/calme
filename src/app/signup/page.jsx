@@ -89,7 +89,7 @@ export default function Signup() {
                     <input type="email" name="email" placeholder="Email" className="w-3/4 rounded-2xl px-5 py-3 text-xl bg-calme-light" required />
                     <input type="password" name="password" placeholder="Mot de passe" className="w-3/4 rounded-2xl px-5 py-3 text-xl mb-10 bg-calme-light" required />
 
-                    <Button>S'inscrire</Button>
+                    <Button type="submit">S'inscrire</Button>
                   </form>
 
                   <Link href="/login">

@@ -18,7 +18,6 @@ export default function Profile() {
   const { data: session } = useSession();
 
   // States
-  const [openModal, setOpenModal] = useState(false);
   const [handleChoice, setHandleChoice] = useState(false)
   const [phoneNumber, setPhoneNumber] = useState("");
   const [birth, setBirth] = useState("");
@@ -270,9 +269,6 @@ export default function Profile() {
                     >
                       <label htmlFor="skin" className="text-start w-full flex gap-2 items-center">
                         Quel est votre type de peau ?
-                        <button onClick={() => setOpenModal(true)}>
-                          <Info className="w-5" />
-                        </button>
                       </label>
                       <select
                         id="skin"
@@ -289,24 +285,6 @@ export default function Profile() {
                         <option value="ne sais pas">Ne sais pas</option>
                       </select>
                       <ChevronDown className="absolute pointer-events-none bottom-3 right-3" />
-
-                      {/* Modal */}
-                      {openModal && (
-                        <div className="fixed inset-0 bg-calme-dark bg-opacity-50 flex justify-center items-center z-50">
-                          <div className="bg-calme-light py-5 px-8 rounded-2xl w-1/2">
-                            <div className="absolute w-1/2 right-8">
-                              <button onClick={() => setOpenModal(false)}><X /></button>
-                            </div>
-                            <div className="text-start whitespace-pre-line">
-                              <p><b>Peau sèche :</b> manque de sébum, tiraillements et inconforts.</p>
-                              <p><b>Peau normale :</b> aucun excès ou manque de sébum.</p>
-                              <p><b>Peau mixte :</b> excès de sébum sur la zone "T"
-                                (menton, nez et front). Les autres zones sont normales à sèches.</p>
-                              <p><b>Peau grasse :</b> excès de sébum présent sur l'ensemble du visage.</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
                     </div>
 
                     <h3 className="text-2xl font-semibold w-3/4 text-start">Hydratation</h3>

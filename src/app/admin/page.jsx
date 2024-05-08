@@ -93,7 +93,7 @@ export default function Admin() {
 
         <h1 className="text-5xl text-center mt-11 mb-12">Mes clients</h1>
 
-        <div className="px-52">
+        <div className="px-52 h-screen">
           <div className="flex justify-center items-center gap-2 rounded-3xl bg-white px-5 py-3 mx-14 my-8">
             <Search />
             <input
