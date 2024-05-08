@@ -1,8 +1,9 @@
 import { MongoClient } from "mongodb";
+import { NextResponse } from "next/server";
 
-export async function POST(request) {
-  const { lastname, firstname } = await request.json();
-  let client;
+export async function GET() {
+let client;
+
   try {
     // Connexion au cluster MongoDB
     client = await MongoClient.connect(process.env.MONGODB_CLIENT);
@@ -11,9 +12,16 @@ export async function POST(request) {
     const db = client.db(process.env.MONGODB_DATABASE);
 
     // Récupérer les utilisateurs
-    let users = await db.collection("users").find({ lastname, firstname }).toArray();
+    let users = await db.collection("users").find({role : "user"}).toArray();
 
-    return users;
+    await client.close();
+    return NextResponse.json(
+      {
+        users
+      }, {
+      status: 200
+    }
+    );
 
   } catch (e) {
     await client.close();
