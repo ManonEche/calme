@@ -6,6 +6,6 @@ body {
   overflow-x: hidden;
 }
 
-next-route-announcer {
+#__next-route-announcer__ {
   display: none;
 }
