@@ -7,8 +7,8 @@ export default function NotFound() {
     <>
       <div className="min-h-screen w-screen">
         <Header />
-        <div className="flex flex-col justify-center items-center gap-12 mt-40">
-          <Image src="/error.webp" width={1000} height={1000} className="me-2 w-2/5" alt="Erreur" />
+        <div className="flex flex-col justify-center items-center gap-12 mt-52 xl:mt-68">
+          <Image src="/error.webp" width={1000} height={1000} className="me-2 px-8 md:px-0 md:w-2/5" alt="Erreur" />
           <p className="text-2xl text-center">Désolé, cette page s'est évaporée tel un doux parfum.</p>
         </div>
         <div className="absolute bottom-0 left-0">
