@@ -5,3 +5,7 @@
 body {
   overflow-x: hidden;
 }
+
+next-route-announcer {
+  display: none;
+}
