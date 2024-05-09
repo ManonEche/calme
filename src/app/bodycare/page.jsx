@@ -11,7 +11,7 @@ export default function BodyCare() {
         <div className="flex justify-center">
           <div className="flex justify-center items-center w-4/5 px-0 mx-0">
             <div>
-              <Image src="/bodyRound.webp" width={500} height={500} className="w-1/3 h-1/3 float-right ps-3 pb-3" alt="Soin du corps" />
+              <Image src="/bodyRound.webp" width={500} height={500} className="md:w-1/3 md:h-1/3 md:float-right md:ps-5 pb-10 md:pb-5" alt="Soin du corps" />
               <div className="text-xl whitespace-pre-line pt-2">
                 <p>Détendez-vous et revitalisez votre corps avec notre Soin Harmonie Divine, une expérience luxueuse conçue pour vous transporter dans un état de bien-être absolu. Dans notre oasis de calme et de sérénité, notre équipe dévouée vous offre un traitement personnalisé pour nourrir votre peau et apaiser votre esprit.</p>
                 <br />
@@ -41,7 +41,7 @@ export default function BodyCare() {
             </div>
           </div>
         </div>
-        <div className="pt-5">
+        <div className="pt-5 2xl:pt-24">
           <Footer />
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function About() {
         <Header />
         <h1 className="text-5xl text-center mt-11 mb-12">À propos</h1>
         <div className="flex justify-center">
-          <div className="flex flex-col justify-center items-center w-4/5 text-xl whitespace-pre-line pt-2">
+          <div className="flex flex-col justify-center items-center w-4/5 text-xl whitespace-pre-line pt-2 lg:pt-10">
             <p>Bienvenue dans notre institut de beauté, un sanctuaire dédié à la relaxation, à la régénération et à la révélation de votre beauté naturelle. Nous sommes fiers de vous offrir une expérience exceptionnelle où chaque visite est une escapade sensorielle vers le bien-être et la revitalisation.</p>
             <br />
             <p>Chez nous, nous croyons en l'importance de prendre soin de soi, à la fois à l'intérieur et à l'extérieur. C'est pourquoi notre équipe d'esthéticiennes hautement qualifiées et passionnées travaille avec dévouement pour répondre à vos besoins individuels et vous offrir des soins personnalisés qui vous laisseront sentir revitalisé(e) et rajeuni(e).</p>
@@ -25,7 +25,7 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="pt-5">
+        <div className="pt-5 2xl:absolute 2xl:bottom-0 2xl:left-0">
           <Footer />
         </div>
       </div>

@@ -162,8 +162,8 @@ export default function Profile() {
           {!loadingQuiz && !formSent && !quizzes.some((quizzes) => quizzes?.userId === session?.user._id) ? (
 
             <div className="flex justify-center">
-              <div className="flex justify-center items-center w-4/5 px-0 mx-0">
-                <div className="w-3/4 text-center whitespace-pre-line">
+              <div className="flex justify-center items-center lg:w-4/5 px-0 mx-0">
+                <div className="lg:w-3/4 text-center whitespace-pre-line">
                   <h2 className="text-3xl pb-10">Je remplis mon profil beauté</h2>
                   <form className="flex flex-col items-center gap-7 text-xl pb-10" onSubmit={handleSubmit}>
 
@@ -599,7 +599,7 @@ export default function Profile() {
               {quizzes.filter((quiz) => quiz.userId === session?.user._id).map((quiz) => (
                 <div key={quiz._id}>
                   <div className="flex justify-center">
-                    <div className="w-3/5">
+                    <div className="lg:w-3/5">
                       <h3 className="text-2xl font-semibold text-start pb-5 ps-2">Informations personnelles</h3>
 
                       <div className="bg-white rounded-2xl px-5 pt-3 text-xl">

@@ -5,16 +5,20 @@ import Footer from "@/components/Footer/Footer";
 import { checkEmail } from "@/utils/check-email";
 import Image from "next/image";
 import Link from "next/link";
-import { UserRound } from "lucide-react";
+import { Menu, UserRound } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { getSession, signIn } from "next-auth/react";
 import { toast } from "sonner";
+import { useState } from "react";
 
 export default function Login() {
   // Variable
   const router = useRouter();
 
-  // Function
+  // State
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Functions
   const prepareLogin = async (formData) => {
     const email = formData.get("email");
     const password = formData.get("password");
@@ -60,6 +64,11 @@ export default function Login() {
     }
 
   }
+
+  const burgerMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="bg-calme-medium min-h-screen w-screen">
@@ -70,7 +79,7 @@ export default function Login() {
               <Image src="/brand.webp" width={100} height={100} alt="Marque" />
             </div>
             <div className="py-7 px-8">
-              <nav>
+              <nav className="hidden md:flex">
                 <ul className="flex gap-3 text-xl">
                   <Link href="/home">
                     <li>Accueil</li>
@@ -89,13 +98,42 @@ export default function Login() {
                   </Link>
                 </ul>
               </nav>
+
+              {/* Menu burger */}
+              <div className="md:hidden">
+                <button onClick={burgerMenu}>
+                  <Menu />
+                </button>
+                {isOpen && (
+                  <div className="absolute top-16 right-0 bg-calme-medium p-4 rounded">
+                    <ul className="flex flex-col gap-3 text-xl">
+                      <Link href="/home">
+                        <li>Accueil</li>
+                      </Link>
+                      <Link href="/services">
+                        <li>Nos prestations</li>
+                      </Link>
+                      <Link href="/about">
+                        <li>À propos</li>
+                      </Link>
+                      <Link href="/contact">
+                        <li>Contact</li>
+                      </Link>
+                      <Link href="/login">
+                        <li><UserRound /></li>
+                      </Link>
+                    </ul>
+                  </div>
+                )}
+              </div>
+
             </div>
           </div>
           <div className="flex">
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col w-full lg:w-1/2">
               <div className="flex flex-1 justify-center items-center">
                 <div className="w-3/4 text-center whitespace-pre-line pt-28">
-                  <h1 className="text-5xl pb-10">Connexion</h1>
+                  <h1 className="text-5xl pb-10 pt-28 lg:pt-0">Connexion</h1>
 
                   <form className="flex flex-col items-center gap-4" action={prepareLogin}>
 
@@ -112,9 +150,11 @@ export default function Login() {
                   </Link>
                 </div>
               </div>
-              <Footer />
+              <div className="absolute left-0 bottom-0">
+                <Footer />
+              </div>
             </div>
-            <div className="relative z-10 bg-right bg-[url('/home.webp')] bg-cover bg-no-repeat w-1/2 h-screen">
+            <div className="relative z-10 bg-right bg-[url('/home.webp')] bg-cover bg-no-repeat w-1/2 h-screen hidden lg:block">
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ export default function Services() {
         <Header />
         <h1 className="text-5xl text-center mt-11 mb-16">Nos prestations</h1>
         <div className="flex justify-center">
-          <div className="flex justify-center items-center w-4/5 gap-10">
+          <div className="flex flex-col md:flex-row justify-center items-center w-4/5 gap-10 md:pt-10 lg:pt-0 xl:pt-8">
 
             <Link href="/facialcare">
               <div className="flex flex-col justify-center items-center gap-6">
@@ -27,7 +27,7 @@ export default function Services() {
             </Link>
 
             <Link href="/bodycare">
-              <div className="flex flex-col justify-center items-center gap-6">
+              <div className="flex flex-col justify-center items-center gap-6 pt-8 md:pt-0">
                 <Image src="/bodyArch.webp" width={1000} height={1000} alt="Soin du corps" />
                 <h2 className="text-center text-2xl uppercase px-3 h-5">Soin du corps</h2>
               </div>
@@ -35,7 +35,7 @@ export default function Services() {
 
           </div>
         </div>
-        <div className="pt-32">
+        <div className="pt-12 sm:pt-44 lg:absolute lg:bottom-0 lg:left-0">
           <Footer />
         </div>
       </div>

@@ -93,7 +93,7 @@ export default function Admin() {
 
         <h1 className="text-5xl text-center mt-11 mb-12">Mes clients</h1>
 
-        <div className="px-52 h-screen">
+        <div className="lg:px-52 h-screen">
           <div className="flex justify-center items-center gap-2 rounded-3xl bg-white px-5 py-3 mx-14 my-8">
             <Search />
             <input
@@ -105,7 +105,15 @@ export default function Admin() {
             />
           </div>
           <ul>
-            {displayUsers.map(user => (
+            {displayUsers
+              .sort((a, b) => {
+                const nameA = `${a.firstname} ${a.firstname}`.toLowerCase();
+                const nameB = `${b.firstname} ${b.firstname}`.toLowerCase();
+                if (nameA < nameB) return -1;
+                if (nameA > nameB) return 1;
+                return 0;
+              })
+              .map(user => (
               <li key={user._id}>
                 <div
                   className="text-2xl pb-3 px-16 capitalize"
@@ -122,7 +130,7 @@ export default function Admin() {
                 {openModal && (
                   <div className="fixed inset-0 bg-calme-dark bg-opacity-50 flex justify-center items-center z-50">
                     <div className="bg-calme-light py-5 px-8 rounded-2xl w-4/5 h-4/5 overflow-y-scroll border-calme-light border-8">
-                      <div className="absolute w-4/5 flex justify-end pe-20">
+                      <div className="pb-3 sm:pb-0 sm:absolute sm:w-4/5 flex justify-end sm:pe-20">
                         <button onClick={() => setOpenModal(false)}>
                           <X />
                         </button>
@@ -132,7 +140,7 @@ export default function Admin() {
                           {quizzes.filter((quiz) => quiz.userId === selectedUserId).map((quiz) => (
                             <div key={quiz._id}>
                               <div className="flex justify-center">
-                                <div className="w-3/5">
+                                <div className="md:w-3/5">
                                   <h3 className="text-2xl font-semibold text-start pb-5 ps-2">Informations personnelles</h3>
 
                                   <div className="bg-white rounded-2xl px-5 pt-3 text-xl">
