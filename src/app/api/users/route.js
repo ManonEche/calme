@@ -1,5 +1,3 @@
-"use server";
-
 import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
 
@@ -16,7 +14,6 @@ let client;
     // Récupérer les utilisateurs
     let users = await db.collection("users").find({role : "user"}).toArray();
 
-    await client.close();
     return NextResponse.json(
       {
         users
@@ -26,7 +23,6 @@ let client;
     );
 
   } catch (e) {
-    await client.close();
     throw new Error(e.message);
   }
 }
