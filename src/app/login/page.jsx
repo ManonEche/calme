@@ -150,7 +150,7 @@ export default function Login() {
                   </Link>
                 </div>
               </div>
-              <div className="pt-3 sm:absolute sm:left-0 sm:bottom-0">
+              <div className="pt-8 sm:absolute sm:left-0 sm:bottom-0">
                 <Footer />
               </div>
             </div>
